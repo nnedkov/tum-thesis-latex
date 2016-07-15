@@ -9,17 +9,19 @@
 
   \centering
 
-  \IfFileExists{logos/tum.pdf}{%
-    \includegraphics[height=20mm]{logos/tum.pdf}
-  }{%
+  % TODO: if you wish to remove the university logo
+  % just delete the file logos/tum_logo.png
+  \IfFileExists{logos/tum_logo.png}{
+    \includegraphics[width=4cm, height=20mm]{logos/tum_logo.png}
+  }{
     \vspace*{20mm}
   }
 
   \vspace{5mm}
-  {\huge\MakeUppercase{\getFaculty{}}}\\
+  {\huge\MakeUppercase{\getUniversity{}}}\\
 
   \vspace{5mm}
-  {\large\MakeUppercase{\getUniversity{}}}\\
+  {\large\MakeUppercase{\getFaculty{}}}\\
 
   \vspace{20mm}
   {\Large \getDoctype{}}
@@ -30,8 +32,10 @@
   \vspace{15mm}
   {\LARGE \getAuthor{}}
 
-  \IfFileExists{logos/faculty.pdf}{%
+  % TODO: if you wish to remove the faculty logo
+  % just delete the file logos/informatics_logo.png
+  \IfFileExists{logos/informatics_logo.png}{
     \vspace{20mm}
-    \includegraphics[height=20mm]{logos/faculty.pdf}
+    \includegraphics[height=60mm]{logos/informatics_logo.png}
   }{}
 \end{titlepage}

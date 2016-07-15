@@ -1,17 +1,17 @@
 \begin{titlepage}
   \centering
 
-  \IfFileExists{logos/tum.pdf}{%
-    \includegraphics[height=20mm]{logos/tum.pdf}
-  }{%
+  \IfFileExists{logos/tum_logo.png}{
+    \includegraphics[width=4cm, height=20mm]{logos/tum_logo.png}
+  }{
     \vspace*{20mm}
   }
 
   \vspace{5mm}
-  {\huge\MakeUppercase{\getFaculty{}}}\\
+  {\huge\MakeUppercase{\getUniversity{}}}\\
 
   \vspace{5mm}
-  {\large\MakeUppercase{\getUniversity{}}}\\
+  {\large\MakeUppercase{\getFaculty{}}}\\
 
   \vspace{20mm}
   {\Large \getDoctype{}}
@@ -30,8 +30,4 @@
     Submission Date: & \getSubmissionDate{} \\
   \end{tabular}
 
-  \IfFileExists{logos/faculty.pdf}{%
-    \vfill{}
-    \includegraphics[height=20mm]{logos/faculty.pdf}
-  }{}
 \end{titlepage}
