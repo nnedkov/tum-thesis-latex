@@ -64,17 +64,20 @@ function show_options() {
 ######################################################################################################
 # autocompile
 
+function run_pdflatex() {
+	pdflatex -output-directory $BUILD --enable-write18 -file-line-error -src-specials \
+		-interaction=nonstopmode $MAIN.tex > $BUILD/$MAIN.log
+}
+
 function autocompile() {
 	print "blue" "\n*** Autocompile ***"
 	while true; do
 		FILES=(`find ./ -mindepth 1 -maxdepth 2 -type f|grep -E "tex$"`)
 		inotifywait -e modify ${FILES[@]}
 		print "dark_green" "Compiling! `date`"
-		for i in {1..2}; do
-			pdflatex -output-directory $BUILD --enable-write18 -file-line-error -src-specials \
-				-interaction=nonstopmode $MAIN.tex > $BUILD/$MAIN.log
-		done
-		print "dark_green" "Done...\n"
+		run_pdflatex
+		run_pdflatex
+		print "dark_green" "\nDone...\n"
 	done
 }
 
@@ -88,7 +91,7 @@ function delete_built_files() {
 		print "dark_green" "Deleting built files: $file"
 		rm $file
 	done
-	echo
+	print "dark_green" "\nDone...\n"
 }
 
 ######################################################################################################
@@ -101,20 +104,19 @@ function delete_trail_whitespaces() {
 		print "dark_green" "Deleting trailing whitespaces from file: $file"
 		sed -i '' -e's/[ \t]*$//' $file >& /dev/null
 	done
-	echo
+	print "dark_green" "\nDone...\n"
 }
 
 ######################################################################################################
 # update bibliography
 
-# TODO: test below
 function update_bibliography() {
 	print "blue" "\n*** Updating bibliography ***"
-	for i in {1..3}; do
-		pdflatex -output-directory $BUILD --enable-write18 -file-line-error -src-specials \
-			-interaction=nonstopmode $MAIN.tex > $BUILD/$MAIN.log
-	done
-	echo
+	run_pdflatex
+	biber $BUILD/$MAIN > $BUILD/$MAIN.log
+	run_pdflatex
+	run_pdflatex
+	print "dark_green" "\nDone...\n"
 }
 
 ######################################################################################################

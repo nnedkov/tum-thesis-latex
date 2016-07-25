@@ -2,7 +2,6 @@
 
 \documentclass[headsepline,footsepline,footinclude=false,oneside,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc]{scrbook} % one-sided
 
-% TODO: change citation style in settings
 \input{settings}
 
 % TODO: change thesis information
@@ -46,6 +45,7 @@
 \listoffigures{}
 \listoftables{}
 \microtypesetup{protrusion=true}
-\printbibliography{}
+\nocite{*}
+\printbibliography
 
 \end{document}
