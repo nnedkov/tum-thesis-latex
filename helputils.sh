@@ -66,12 +66,14 @@ function show_options() {
 
 function autocompile() {
 	print "blue" "\n*** Autocompile ***"
-	FILES=(`find ./ -mindepth 1 -maxdepth 2 -type f|grep -E "tex$"`)
 	while true; do
+		FILES=(`find ./ -mindepth 1 -maxdepth 2 -type f|grep -E "tex$"`)
 		inotifywait -e modify ${FILES[@]}
 		print "dark_green" "Compiling! `date`"
-		pdflatex -output-directory $BUILD --enable-write18 -file-line-error -src-specials \
-			-interaction=nonstopmode $MAIN.tex > $BUILD/$MAIN.log
+		for i in {1..2}; do
+			pdflatex -output-directory $BUILD --enable-write18 -file-line-error -src-specials \
+				-interaction=nonstopmode $MAIN.tex > $BUILD/$MAIN.log
+		done
 		print "dark_green" "Done...\n"
 	done
 }
