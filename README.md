@@ -4,11 +4,14 @@ This is a LaTeX template created according to the guidelines for TUM Informatics
 
 Comments and contributions are welcome!
 
-## Quickstart
+## Super Quickstart
 
- * Clone the repository (find the light green button in the top-right corner of this page). I strongly recommend using Git while you write your thesis as it's the only sane way to track changes in your files and keep multiple versions of your thesis.
- * For compiling use the bash script `helputils.sh`. Just execute `./helputils.sh 2` in a bash shell and happily edit your tex files. As soon as you save your changes, compilation will be triggered automatically. The script has the following dependencies: ... Resolve them by executing `sudo apt-get install ...`. The packages are quite big so stay patient.
- * Look for `TODO` comments in the provided files. Start with file `main.tex`.
+ * Clone this repository
+ * Install dependencies: `sudo apt-get install texlive-latex-base biber inotify-tools`
+ * Before you start editing, enable automatic compilation by executing `./helputils.sh 2` in a bash shell. Later, when you edit tex files and save your changes, the PDF will be updated automatically. Obviously **in case you have some major LaTex syntax error the automatic compilation will fail**
+ * Look for `TODO` comments in the provided tex files to get hints where to start
+ * When you have updated your bibliography in the bib file execute `./helputils.sh 5` to update the PDF
+ * I strongly recommend using Git while you write your thesis as it's the only sane way to track changes and keep multiple versions of your files. If you decide to do so, maybe you will find useful deleting the built files and trailing whitespaces from your files before doing commits. Do so by executing `./helputils.sh 3 4`. In order to view all options of the helping script type: `./helputils.sh`
 
 
 If you have any problems with the template feel free to [create an issue][issue]. For general LaTeX questions use [TeX StackExchange][tex-se].
@@ -20,17 +23,18 @@ This template is a modified (derived) version from [this template][orig-template
 ## Changes made
 
 * The Makefile was substituted with the bash script `helputils.sh`. The script provides some useful additional functionality:
-	1. List available options (use `./helputils.sh 1`):  
+	1. List available options (type `./helputils.sh 1`):
 		Prints all available options provided by the script.
-	2. Automatic compilation (use `./helputils.sh 2`):  
-		The shell enters a blocking state. Every time a change is detected in any tex file the shell gets unblocked and triggers compilation. Keep in mind that file changes are detected only when they are saved to hard disk.
-	3. Deletion of built files (use `./helputils.sh 3`):  
-		Compilation generates a big number of log files in the build directory. This command cleans your build directory without deleting the produced pdf.
-	4. Deletion of trailing whitespaces from tex, sh and bib files (use `./helputils.sh 4`):  
-		Trailing whitespaces suck. They drive people crazy. They are parasites that eat up your disk space unnecessarily. If you happen to have digital OCD as I do this command will help you keep your sanity. Keep your files parasite-free!
-	5. Updating bibliography (use `./helputils.sh 5`):  
-		Unfortunately, updating your bibliography will require more than a single compilation. I don't know why this happens and I never got curious enough to find out. For performance reasons the automatic compilation will perform a single compilation. Hence, if you change the bib file and the pdf does not have the updated references use this command.
-* I included the university and faculty logos in the `logos` directory. Unfortunately, Florian's template was pointing to invalid urls so in order to save you time finding them I added them directly in my repository. Additionally, the bash script for cropping the logos was omitted as they already have the appropriate shape.
+	2. Automatic compilation (type `./helputils.sh 2`):
+		The script enters a blocking state. When a change is detected in a tex file the script unblocks and triggers compilation. Keep in mind that changes are detected only when they are saved to disk.
+	3. Deletion of built files (type `./helputils.sh 3`):
+		Compilation generates a big number of log files in the build directory. This command cleans your build directory without deleting the produced PDF.
+	4. Deletion of trailing whitespaces from .tex, .sh and .bib files (type `./helputils.sh 4`):
+		Trailing whitespaces suck. They drive people crazy. They are parasites that eat up your disk space unnecessarily. If you happen to have digital OCD as I do, this command will help you keep your sanity. Keep your files parasite-free!
+	5. Updating bibliography (type `./helputils.sh 5`):
+		Updating your bibliography requires more than a single compilation. I don't know why this happens and I never got curious enough to find out. For performance reasons automatic compilation performs a single compilation. Hence, when you change the bib file use this command to update the references on the PDF.
+* I included the university and faculty logos in the `logos` directory. Unfortunately, the original template was pointing to invalid urls so in order to save you time finding them I added them directly in this repository. Additionally, the bash script for cropping the logos was omitted as they already have the appropriate shape.
+* A new page with Abbreviations and Acronyms was added.
 
 ## License
 
